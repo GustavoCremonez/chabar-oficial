@@ -12,7 +12,7 @@
       alt="Flores superior direito"
       class="absolute top-0 left-0 w-32 md:w-52 lg:w-72 scale-x-[-1]"
     />
-    <h1 class="font-bold text-xl uppercase text-center text-violet-400">
+    <h1 class="font-bold text-4xl uppercase text-center text-violet-400">
       Chabar Vitoria & Gustavo
     </h1>
 
@@ -26,8 +26,8 @@
 
 <main class="w-screen flex flex-col items-center justify-center">
   <section class="w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-2xl font-bold text-violet-500">O que é Chabar?</h2>
-    <p class="text-lg text-violet-400 mt-3">
+    <h2 class="text-4xl font-bold text-violet-500">O que é Chabar?</h2>
+    <p class="text-xl text-violet-400 mt-3">
       Chá Bar é a versão moderna e animada do tradicional Chá de Panela, onde
       amigos e familiares se reúnem para celebrar o casal em grande estilo! Uma
       festa cheia de diversão, descontração e muita alegria, onde todos podem
@@ -37,30 +37,48 @@
   </section>
 
   <section class="w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-2xl font-bold text-violet-500">Presentes</h2>
-    <p class="text-lg text-violet-400 mt-3">
+    <h2 class="text-4xl font-bold text-violet-500">Presentes</h2>
+    <p class="text-xl text-violet-400 mt-3">
       Quer nos ajudar a montar nosso cantinho? Fizemos uma lista de presentes
       para facilitar sua escolha. Tudo será recebido com muito carinho. Confira
       a lista abaixo e escolha o que mais combina com você!
     </p>
-    <p class="text-lg text-violet-400 mt-3">
+    <p class="text-xl text-violet-400 mt-3 font-bold">
       <b>Obs:</b> Para evitar que presentes sejam repetidos, assim que alguém
-      escolhê-lo na confirmação da presença, ele sairá da lista (você também
-      pode dar algo que não esteja na lista e que ache legal).
+      escolhê-lo na confirmação da presença, ele sairá da lista "Sugestões" e
+      entrara na listá "Já temos". Você também pode dar algo que não esteja na
+      lista e que ache legal.
     </p>
 
-    <h3 class="text-xl font-bold text-violet-400 mt-3">Lista:</h3>
+    <span
+      class="flex flex-col md:flex-row lg:flex-row md:items-center lg:items-center justify-around mt-12"
+    >
+      <span>
+        <h3 class="text-4xl font-bold text-violet-400 mt-3">Sugestões:</h3>
+        <ul
+          class="flex flex-col text-violet-300 list-none text-2xl gap-3 pr-5 pt-5"
+        >
+          @for (gift of listGifts; track $index) {
+          <li>{{ gift }}</li>
+          }
+        </ul>
+      </span>
 
-    <ul class="flex flex-col text-violet-300 p-4 list-none gap-1 text-xl">
-      <li>Casa</li>
-      <li>Carro</li>
-      <li>Casa</li>
-      <li>Casa</li>
-    </ul>
+      <span class="mt-12">
+        <h3 class="text-4xl font-bold text-violet-400 mt-3">Já temos:</h3>
+        <ul
+          class="flex flex-col text-violet-300 list-none gap-3 text-2xl pr-5 pt-5"
+        >
+          @for (gift of alreadyReceivedGifts; track $index) {
+          <li>{{ gift }}</li>
+          }
+        </ul>
+      </span>
+    </span>
   </section>
 
   <section class="w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-2xl font-bold text-violet-500 text-center">Informações</h2>
+    <h2 class="text-4xl font-bold text-violet-500 text-center">Informações</h2>
 
     <section
       class="flex flex-col text-violet-500 md:gap-10 sm:gap-10 lg:flex-row lg:justify-around mt-12"
@@ -68,18 +86,20 @@
       <article
         class="flex flex-col items-start justify-center mb-8 lg:mb-0 lg:w-1/2"
       >
-        <h3 class="font-bold text-2xl">Nosso Grande Dia</h3>
-        <p class="uppercase">24 de novembro de 2024 - 12h00</p>
+        <h3 class="font-bold text-3xl">Nosso Grande Dia</h3>
+        <p class="uppercase text-xl">24 de novembro de 2024 - 12h00</p>
 
-        <p class="mt-6 font-bold uppercase">Espaço:</p>
-        <p>Rua Maria Sarzedas, 79, Residencial Horizonte, Londrina - PR</p>
+        <p class="mt-6 font-bold uppercase text-2xl">Espaço:</p>
+        <p class="text-xl">
+          Rua Osvaldo Pigozzo 356, Vivi Xavier, Londrina - PR
+        </p>
 
         <a
-          href="https://maps.app.goo.gl/yaYSsh6cKpJ851a46"
+          href="https://maps.app.goo.gl/JPyna7woarntSEw2A"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-8 underline"
-          >Ver direções</a
+          class="mt-8 underline text-2xl font-bold uppercase"
+          >Ver rota</a
         >
       </article>
 
@@ -97,7 +117,7 @@
   </section>
 
   <section class="countdown w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-2xl font-bold text-violet-500 text-center mb-4 uppercase">
+    <h2 class="text-4xl font-bold text-violet-500 text-center mb-4 uppercase">
       Faltam
     </h2>
     <div class="flex justify-center items-center space-x-4">
@@ -105,26 +125,26 @@
         <span class="text-4xl font-bold text-violet-400">{{
           countdown.days
         }}</span>
-        <p class="text-violet-500">Dias</p>
+        <p class="text-violet-500 text-xl">Dias</p>
       </div>
       <div class="text-center">
         <span class="text-4xl font-bold text-violet-400">{{
           countdown.hours
         }}</span>
-        <p class="text-violet-500">Horas</p>
+        <p class="text-violet-500 text-xl">Horas</p>
       </div>
       <div class="text-center">
         <span class="text-4xl font-bold text-violet-400">{{
           countdown.minutes
         }}</span>
-        <p class="text-violet-500">Minutos</p>
+        <p class="text-violet-500 text-xl">Minutos</p>
       </div>
     </div>
   </section>
 </main>
 
 <footer
-  class="w-screen flex items-center justify-center p-14 text-violet-400 font-bold uppercase"
+  class="w-screen flex items-center justify-center p-14 text-violet-400 font-bold uppercase text-xl"
 >
   Gustavo Cremonez - 2024
 </footer>

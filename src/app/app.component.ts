@@ -35,15 +35,74 @@ export class AppComponent implements OnInit, OnDestroy {
   mapHeight: string = '300px';
 
   marker: GeoMarker = {
-    lat: -23.24981434279823,
-    lng: -51.187648190056926,
+    lat: -23.271449160067455,
+    lng: -51.16413054110437,
   };
 
   options: google.maps.MapOptions = {
     mapId: 'DEMO_MAP_ID',
-    center: { lat: -23.24981434279823, lng: -51.187648190056926 },
+    center: { lat: -23.271449160067455, lng: -51.16413054110437 },
     zoom: 17,
   };
+
+  listGifts: Set<string> = new Set([
+    'Jogo de Cama 4 Peças Queen',
+    'Jogo de Jantar',
+    'Escorredor de Pratos de metal',
+    'Jogo de Toalha',
+    'Tábua de Roupa',
+    'Kit de Limpeza',
+    'Jogo de Facas',
+    'Galheteiro',
+    'Cesto de Roupas',
+    'Escorredores',
+    'Cortinas',
+    'Frigideiras',
+    'Formas em Geral',
+    'Assadeiras/Travessas',
+    'Jarra de Suco',
+    'Mantinha Queen ou King',
+    'Tigelas/Bowl',
+    'Raladores/Espremedor/Descascador',
+    'Kit de Saladeiras Bowl',
+    'Toalha de Mesa',
+    'Conjunto de Sobremesa',
+    'Jogo de Tapetes',
+    'Jogo de Colcha Queen 3 Peças',
+    'Jogo de Xícaras',
+    'Tupperware Eletrolux',
+    'Varal Recolhivel',
+    'Rodo Mob Spray',
+    'Sanduicheira',
+    'Ferro',
+    'Manta p/ Sofá',
+    'Xixer',
+    'Edredom',
+    'Tapete Peludinho',
+    'Lixeiras p/ Cozinha e Banheiro',
+    'Kit de Utensílios p/ Banheiro',
+    'Porta Filtro de Café 102',
+    'Itens de Decoracao',
+    'Itens de Decoracao Parede',
+    'Organizador de Mantimentos',
+    'Porta Talheres Bambu',
+    'Chaleira',
+    'Bomboniere',
+  ]);
+  alreadyReceivedGifts: Set<string> = new Set([
+    'Liquidificador',
+    'Batedeira',
+    'Potes de Plastico',
+    'Copos de Vidro',
+    'Utensílios de Silicone',
+    'Talheres',
+    'Porta Temperos',
+    'Panelas',
+    'Garrafa de Café',
+    'Panela de Pressão',
+    'Petisqueira',
+    'Jogo de Panelas',
+  ]);
 
   ngOnInit() {
     this.subscription = interval(1000).subscribe(() => {
@@ -55,19 +114,15 @@ export class AppComponent implements OnInit, OnDestroy {
   private updateMapSize() {
     const width = window.innerWidth;
     if (width < 640) {
-      // sm
       this.mapWidth = '100%';
       this.mapHeight = '250px';
     } else if (width < 768) {
-      // md
       this.mapWidth = '100%';
       this.mapHeight = '300px';
     } else if (width < 1024) {
-      // lg
       this.mapWidth = '100%';
       this.mapHeight = '350px';
     } else {
-      // xl and above
       this.mapWidth = '100%';
       this.mapHeight = '400px';
     }
