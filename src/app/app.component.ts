@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
     'Sanduicheira',
     'Ferro',
     'Manta p/ Sofá',
-    'Xixer',
+    'Mixer',
     'Edredom',
     'Tapete Peludinho',
     'Lixeiras p/ Cozinha e Banheiro',
