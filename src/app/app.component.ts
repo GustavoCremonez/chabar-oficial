@@ -150,7 +150,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private updateCountdown() {
-    const targetDate = new Date('2024-11-24T12:00:00');
+    const targetDate = new Date('2024-11-24T11:30:00');
     const now = new Date();
     const timeDiff = targetDate.getTime() - now.getTime();
 
