@@ -1,0 +1,92 @@
+<main class="h-full w-full flex flex-col bg-slate-950 overflow-y-auto">
+  <div class="p-12 flex-grow">
+    <mat-dialog-title
+      class="text-3xl font-bold uppercase text-violet-500 text-center mb-6"
+      >Confirmar Presença</mat-dialog-title
+    >
+
+    <form [formGroup]="formGroup" class="flex flex-col gap-3 mt-5">
+      <mat-form-field class="w-full bg-transparent">
+        <mat-label>Nome</mat-label>
+        <input
+          class="bg-transparent"
+          type="text"
+          matInput
+          formControlName="name"
+        />
+        @if (formGroup.get('name')?.hasError('required')) {
+        <mat-error>Nome é <strong>obrigatório</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="w-full bg-transparent">
+        <mat-label>Acompanhantes</mat-label>
+        <input
+          class="bg-transparent"
+          type="number"
+          matInput
+          formControlName="companions"
+          min="0"
+        />
+      </mat-form-field>
+
+      <div class="w-full">
+        <p class="text-xl font-bold uppercase text-violet-400 mb-4">
+          Presentes
+        </p>
+
+        <ul class="w-full flex flex-col gap-3">
+          @for (gift of giftList; track $index) {
+          <li
+            class="w-full flex p-4 justify-between text-violet-400 items-center border-2 border-violet-400 rounded-lg"
+          >
+            <mat-checkbox (change)="handleSelectedGift(gift)"></mat-checkbox>
+
+            <span class="flex flex-col gap-3 w-full">
+              <img
+                [src]="gift.url_image"
+                [alt]="gift.name"
+                class="w-44 rounded-md items-center justify-center"
+              />
+
+              <p class="text-xl overflow-x-hidden overflow-ellipsis">
+                {{ gift.name }}
+              </p>
+            </span>
+
+            <a
+              class="underline uppercase font-bold text-2xl"
+              [href]="gift.url_shop"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Link</a
+            >
+          </li>
+          }
+        </ul>
+      </div>
+    </form>
+  </div>
+
+  <div class="sticky bottom-0 bg-slate-950 p-4 mt-6 border-t border-violet-400">
+    @if (isLoading) {
+    <mat-spinner class="mx-auto" diameter="50" color="primary"></mat-spinner>
+    } @else {
+    <mat-dialog-actions class="flex gap-4 w-full">
+      <button
+        class="w-full p-4 text-violet-300 bg-transparent hover:bg-violet-100 hover:bg-opacity-5 border-2 border-violet-300 rounded-lg transition-all uppercase font-bold focus:border-violet-400"
+        mat-button
+        (click)="handleCheckin()"
+      >
+        Confirmar
+      </button>
+      <button
+        mat-button
+        class="w-full p-4 text-red-300 bg-transparent hover:bg-red-100 hover:bg-opacity-5 border-2 border-red-300 rounded-lg transition-all uppercase font-bold"
+      >
+        Cancelar
+      </button>
+    </mat-dialog-actions>
+    }
+  </div>
+</main>

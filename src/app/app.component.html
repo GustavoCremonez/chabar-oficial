@@ -32,7 +32,6 @@
       amigos e familiares se reúnem para celebrar o casal em grande estilo! Uma
       festa cheia de diversão, descontração e muita alegria, onde todos podem
       participar, trazendo presentes e brindando juntos esse momento especial.
-      Perfeito para quem quer unir diversão e preparativos para o grande dia!
     </p>
   </section>
 
@@ -145,6 +144,32 @@
         }}</span>
         <p class="text-violet-500 text-xl">Minutos</p>
       </div>
+    </div>
+  </section>
+
+  <section class="countdown w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
+    <h2 class="text-4xl font-bold text-violet-500 text-center mb-4 uppercase">
+      Confirmar presença
+    </h2>
+    <p class="text-xl text-violet-400 mt-3">
+      Estamos muito felizes em compartilhar esse momento especial com você! Será
+      um prazer brindar e celebrar juntos essa nova fase. Para nos ajudar na
+      organização, pedimos que confirme sua presença, informando o seu nome, a
+      quantidade de acompanhantes, e escolhendo um presente da nossa lista.
+    </p>
+    <br />
+    <p class="text-xl text-violet-400 mt-3">
+      Se preferir, você pode optar pela opção "outros" e nos surpreender com o
+      que desejar! Sua presença já será um presente especial para nós.
+    </p>
+
+    <div class="w-full flex items-center justify-center">
+      <button
+        class="w-full md:w-1/2 lg:w-1/2 p-12 mt-8 text-violet-400 font-bold uppercase border-2 rounded-lg flex items-center justify-center hover:bg-violet-100 hover:bg-opacity-5 transition-all border-violet-400 text-2xl"
+        (click)="openCheckinModal()"
+      >
+        Confirmar presença
+      </button>
     </div>
   </section>
 </main>

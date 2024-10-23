@@ -1,3 +1,59 @@
+@use "@angular/material" as mat;
+@use "ngx-toastr/toastr";
+
+@include mat.core();
+
+::ng-deep {
+  .mat-checkbox .mat-checkbox-frame {
+    border-color: #fa3131 !important;
+  }
+
+  .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #fa3131 !important;
+  }
+}
+
+$chabar-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  @include mat.all-component-themes($chabar-theme);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7x;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e9d5ff;
+  border-radius: 5px;
+}
