@@ -80,45 +80,32 @@
     </p>
   </section>
 
-  <section class="w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-4xl font-bold text-violet-500 text-center">Informações</h2>
+  <section
+    class="relative countdown w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20"
+  >
+    <h2 class="text-4xl font-bold text-violet-500 text-center mb-4 uppercase">
+      Confirmar presença
+    </h2>
+    <p class="text-xl text-violet-400 mt-3">
+      Estamos muito felizes em compartilhar esse momento especial com você! Será
+      um prazer brindar e celebrar juntos essa nova fase. Para nos ajudar na
+      organização, pedimos que confirme sua presença, informando o seu nome, a
+      quantidade de acompanhantes, e escolhendo um presente da nossa lista.
+    </p>
+    <br />
+    <p class="text-xl text-violet-400 mt-3">
+      Se preferir por dar algum outro presente, apenas confirme a presença sem
+      selecionar nenhum presente.
+    </p>
 
-    <section
-      class="flex flex-col text-violet-500 md:gap-10 sm:gap-10 lg:flex-row lg:justify-around mt-12"
-    >
-      <article
-        class="flex flex-col items-start justify-center mb-8 lg:mb-0 lg:w-1/2"
+    <div class="w-full flex items-center justify-center">
+      <button
+        class="w-full md:w-1/2 lg:w-1/2 p-12 mt-8 text-violet-400 font-bold uppercase border-2 rounded-lg flex items-center justify-center hover:bg-violet-100 hover:bg-opacity-5 transition-all border-violet-400 text-2xl"
+        (click)="openCheckinModal()"
       >
-        <h3 class="font-bold text-3xl">Nosso Grande Dia</h3>
-        <p class="uppercase text-xl">
-          24 de novembro de 2024 - Das 11:30h até às 17:30h
-        </p>
-
-        <p class="mt-6 font-bold uppercase text-2xl">Espaço:</p>
-        <p class="text-xl">
-          Rua Osvaldo Pigozzo 356, Vivi Xavier, Londrina - PR
-        </p>
-
-        <a
-          href="https://maps.app.goo.gl/JPyna7woarntSEw2A"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-8 underline text-2xl font-bold uppercase"
-          >Ver rota</a
-        >
-      </article>
-
-      <div class="w-full lg:w-1/2">
-        <google-map [options]="options" [width]="mapWidth" [height]="mapHeight">
-          <map-advanced-marker
-            #markElem="mapAdvancedMarker"
-            #mapAdvancedMarker
-            [position]="{ lat: marker.lat, lng: marker.lng }"
-          >
-          </map-advanced-marker>
-        </google-map>
-      </div>
-    </section>
+        Confirmar presença
+      </button>
+    </div>
   </section>
 
   <section class="countdown w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
@@ -147,30 +134,59 @@
     </div>
   </section>
 
-  <section class="countdown w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20">
-    <h2 class="text-4xl font-bold text-violet-500 text-center mb-4 uppercase">
-      Confirmar presença
-    </h2>
-    <p class="text-xl text-violet-400 mt-3">
-      Estamos muito felizes em compartilhar esse momento especial com você! Será
-      um prazer brindar e celebrar juntos essa nova fase. Para nos ajudar na
-      organização, pedimos que confirme sua presença, informando o seu nome, a
-      quantidade de acompanhantes, e escolhendo um presente da nossa lista.
-    </p>
-    <br />
-    <p class="text-xl text-violet-400 mt-3">
-      Se preferir por dar algum outro presente, apenas confirme a presença sem
-      selecionar nenhum presente.
-    </p>
+  <section
+    class="relative w-screen md:w-1/2 lg:w-1/2 border-b-2 p-20 pb-60 md:pb-80 lg:pb-80"
+  >
+    <h2 class="text-4xl font-bold text-violet-500 text-center">Informações</h2>
 
-    <div class="w-full flex items-center justify-center">
-      <button
-        class="w-full md:w-1/2 lg:w-1/2 p-12 mt-8 text-violet-400 font-bold uppercase border-2 rounded-lg flex items-center justify-center hover:bg-violet-100 hover:bg-opacity-5 transition-all border-violet-400 text-2xl"
-        (click)="openCheckinModal()"
+    <section
+      class="flex flex-col text-violet-500 md:gap-10 sm:gap-10 lg:flex-row lg:justify-around mt-12"
+    >
+      <article
+        class="flex flex-col items-start justify-center mb-8 lg:mb-0 lg:w-1/2"
       >
-        Confirmar presença
-      </button>
-    </div>
+        <h3 class="font-bold text-3xl">Nosso Grande Dia</h3>
+        <p class="uppercase text-xl">
+          24 de novembro de 2024 - Das 11:30h até às 17:30h
+        </p>
+
+        <p class="mt-6 font-bold uppercase text-2xl">Espaço:</p>
+        <p class="text-xl">Universo Espaço Festas</p>
+        <p class="text-xl">
+          Rua Osvaldo Pigozzo 356, Vivi Xavier, Londrina - PR
+        </p>
+
+        <a
+          href="https://maps.app.goo.gl/JPyna7woarntSEw2A"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 underline text-2xl font-bold uppercase"
+          >Ver rota</a
+        >
+      </article>
+
+      <div class="w-full lg:w-1/2">
+        <google-map [options]="options" [width]="mapWidth" [height]="mapHeight">
+          <map-advanced-marker
+            #markElem="mapAdvancedMarker"
+            #mapAdvancedMarker
+            [position]="{ lat: marker.lat, lng: marker.lng }"
+          >
+          </map-advanced-marker>
+        </google-map>
+      </div>
+    </section>
+
+    <img
+      src="assets/img/flores-superior-direito.png"
+      alt="Flores superior direito"
+      class="absolute bottom-0 right-0 w-32 md:w-52 lg:w-72 scale-y-[-1]"
+    />
+    <img
+      src="assets/img/flores-superior-direito.png"
+      alt="Flores superior direito"
+      class="absolute bottom-0 left-0 w-32 md:w-52 lg:w-72 scale-x-[-1] scale-y-[-1]"
+    />
   </section>
 </main>
 
