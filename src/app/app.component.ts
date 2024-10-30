@@ -68,8 +68,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     zoom: 17,
   };
 
-  listGifts: Set<string> = new Set();
-  alreadyReceivedGifts: Set<string> = new Set();
+  listGifts: Set<{ name: string; url: string }> = new Set();
+  alreadyReceivedGifts: Set<{ name: string; url: string }> = new Set();
 
   ngOnInit() {
     this.subscription = interval(1000).subscribe(() => {
@@ -159,13 +159,20 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private async getGiftList(): Promise<void> {
     const receivedGifts = await this._supabaseService.getAllGifts(true);
+
     this.alreadyReceivedGifts = new Set(
-      receivedGifts?.map((gift: { name: string }) => gift.name)
+      receivedGifts?.map((gift: { name: string; url_shop: string }) => ({
+        name: gift.name,
+        url: gift.url_shop,
+      }))
     );
 
     const availableGifts = await this._supabaseService.getAllGifts(false);
     this.listGifts = new Set(
-      availableGifts?.map((gift: { name: string }) => gift.name)
+      availableGifts.map((gift: { name: string; url_shop: string }) => ({
+        name: gift.name,
+        url: gift.url_shop,
+      }))
     );
 
     this.syncRealtimeGiftsChanges();
@@ -186,16 +193,25 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         next: (change) => {
           if (change.new) {
             const gift = change.new;
+            const giftObject = { name: gift.name, url: gift.url_shop };
 
             if (gift.selected) {
               this.alreadyReceivedGifts = new Set([
                 ...this.alreadyReceivedGifts,
-                gift.name,
+                giftObject,
               ]);
-              this.listGifts.delete(gift.name);
+              this.listGifts = new Set(
+                Array.from(this.listGifts).filter(
+                  (item) => item.name !== gift.name
+                )
+              );
             } else {
-              this.listGifts = new Set([...this.listGifts, gift.name]);
-              this.alreadyReceivedGifts.delete(gift.name);
+              this.listGifts = new Set([...this.listGifts, giftObject]);
+              this.alreadyReceivedGifts = new Set(
+                Array.from(this.alreadyReceivedGifts).filter(
+                  (item) => item.name !== gift.name
+                )
+              );
             }
           }
         },

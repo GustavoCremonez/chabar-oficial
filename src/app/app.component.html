@@ -70,7 +70,11 @@
           class="flex flex-col text-violet-300 list-none text-2xl gap-3 pr-5 pt-5"
         >
           @for (gift of listGifts; track $index) {
-          <li>{{ gift }}</li>
+          <li>
+            <a [href]="gift.url" target="_blank" rel="noopener noreferrer">{{
+              gift.name
+            }}</a>
+          </li>
           }
         </ul>
       </span>
@@ -82,7 +86,11 @@
           class="flex flex-col text-violet-300 list-none gap-3 text-2xl pr-5 pt-5"
         >
           @for (gift of alreadyReceivedGifts; track $index) {
-          <li>{{ gift }}</li>
+          <li>
+            <a [href]="gift.url" target="_blank" rel="noopener noreferrer">{{
+              gift.name
+            }}</a>
+          </li>
           }
         </ul>
       </span>

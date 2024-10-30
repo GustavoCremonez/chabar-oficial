@@ -29,7 +29,7 @@ export class SupabaseService {
   async getAllGifts(selecteds: boolean): Promise<any> {
     const { data, error } = await this.supabaseClient
       .from(GIFT_TABLE)
-      .select('name')
+      .select('name, url_shop')
       .eq('selected', selecteds)
       .order('name', { ascending: true });
 
